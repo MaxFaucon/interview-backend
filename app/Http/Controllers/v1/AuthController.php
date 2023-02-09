@@ -213,10 +213,10 @@ class AuthController extends Controller
     }
 
     public function debug(): JsonResponse
-    {
+    {        
         $params = $this->request->all();
-
-        if ($params["language"] === "fr") {
+        
+        if ($params["lang"] === "fr") {
             return response()->json([
                 'language' => "Français"
             ]);

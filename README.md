@@ -22,3 +22,4 @@ May the force be with you.
     2. Use `composer install` to install all the required packages.
     3. Add an empty `storage/framework/cache/data` directory, otherwise there is an error when using `php artisan serve`.
     4. Start the application using the `php artisan serve` command.
+- Be a saviour: In the `debug()` function of the `AuthController` file, replace `$params["language"]` by `$params["lang"]` since the query parameter name used in the URL is called `lang`.
