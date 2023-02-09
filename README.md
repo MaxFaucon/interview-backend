@@ -23,3 +23,7 @@ May the force be with you.
     3. Add an empty `storage/framework/cache/data` directory, otherwise there is an error when using `php artisan serve`.
     4. Start the application using the `php artisan serve` command.
 - Be a saviour: In the `debug()` function of the `AuthController` file, replace `$params["language"]` by `$params["lang"]` since the query parameter name used in the URL is called `lang`.
+- Be a builder:
+    1. Add a new route in the `routes/api/v1/auth.php` file with the API endpoint called "joke".
+    2. Add a new function in the `app/Http/Controllers/v1/AuthController.php` file.
+    3. Call a joke API and display parts of the result if the request response is successful.

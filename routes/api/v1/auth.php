@@ -18,5 +18,6 @@ Route::controller(AuthController::class) // middlewares are defined in controlle
         Route::get('/user', 'userProfile');
         Route::get('/', 'test');
         Route::get('/debug', 'debug');
+        Route::get('/joke', 'joke');
     });
 

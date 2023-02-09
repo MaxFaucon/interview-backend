@@ -32,6 +32,7 @@ use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 use JetBrains\PhpStorm\ArrayShape;
 use Tymon\JWTAuth\Exceptions\TokenExpiredException;
+use Illuminate\Support\Facades\Http;
 
 class AuthController extends Controller
 {
@@ -215,7 +216,7 @@ class AuthController extends Controller
     public function debug(): JsonResponse
     {        
         $params = $this->request->all();
-        
+
         if ($params["lang"] === "fr") {
             return response()->json([
                 'language' => "Français"
@@ -224,6 +225,23 @@ class AuthController extends Controller
 
         return response()->json([
             'language' => "English"
+        ]);
+    }
+
+    public function joke(): JsonResponse
+    {
+        $randomJoke = Http::get('https://official-joke-api.appspot.com/random_joke');
+
+        if ($randomJoke->successful())
+        {
+            return response()->json([
+                'setup' => $randomJoke['setup'],
+                'punchline' => $randomJoke['punchline']
+            ]);
+        }
+
+        return response()->json([
+            'status' => 'The request failed',
         ]);
     }
 }
